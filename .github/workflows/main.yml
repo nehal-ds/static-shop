@@ -1,0 +1,13 @@
+name: TDS Assignment Action
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  verify-identity:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 23ds2000027@ds.study.iitm.ac.in
+        run: echo "Action triggered for TDS assignment"
