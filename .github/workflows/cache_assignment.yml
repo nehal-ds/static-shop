@@ -1,0 +1,26 @@
+name: Caching Assignment
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  cache-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Cache
+        id: my-cache
+        uses: actions/cache@v4
+        with:
+          path: ./dummy-data
+          key: cache-ffea743
+
+      - name: prime-cache-ffea743
+        run: |
+          echo "Cache hit/miss result: ${{ steps.my-cache.outputs.cache-hit }}"
+          mkdir -p ./dummy-data
+          echo "This is cached data" > ./dummy-data/data.txt
